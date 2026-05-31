@@ -8,6 +8,12 @@ __pycache__/
 # uv-managed virtual environment
 .venv/
 
+# QGIS project files (local visual-inspection scratch; not part of the pipeline)
+*.qgz
+*.qgs
+*.qgz~
+*.qgs~
+
 # GIS pipeline artifacts — regenerable from the pipeline, kept out of git history.
 # The .gitkeep files preserve the (otherwise empty) directory skeleton.
 /data/raw/*
