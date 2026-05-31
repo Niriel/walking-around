@@ -8,6 +8,9 @@ __pycache__/
 # uv-managed virtual environment
 .venv/
 
+# Godot-bound pipeline assets (copied from data/processed; regenerable, may reveal the center)
+/godot/assets/
+
 # QGIS project files (local visual-inspection scratch; not part of the pipeline)
 *.qgz
 *.qgs
