@@ -55,6 +55,7 @@ BGT_GPKG = DATA_RAW / "bgt.gpkg"
 
 # Processed artifacts (Steps 4-6)
 HEIGHTMAP_TIF = DATA_PROCESSED / "heightmap.tif"
+HEIGHTMAP_PREVIEW_PNG = DATA_PROCESSED / "heightmap_preview.png"  # Step 4 sanity preview (8-bit)
 SURFACE_TIF = DATA_PROCESSED / "surface.tif"
 HEIGHTMAP_PNG = DATA_PROCESSED / "heightmap.png"
 SURFACE_PNG = DATA_PROCESSED / "surface.png"
@@ -118,9 +119,16 @@ if CENTER_IS_CONFIGURED:
     XMAX = CENTER_X + _HALF
     YMAX = CENTER_Y + _HALF
     BBOX = (XMIN, YMIN, XMAX, YMAX)  # (xmin, ymin, xmax, ymax) in RD meters
+    # The canonical raster georeferencing, shared by every gridded step (4 = heightmap,
+    # 5 = surface) so the rasters are pixel-identical. Stored as the 6 affine coefficients
+    # in GDAL/affine order (a, b, c, d, e, f) = (pixel_w, 0, xmin, 0, -pixel_h, ymax) — a plain
+    # tuple, not an Affine object, to keep this module stdlib-only. Build with
+    # ``affine.Affine(*cfg.GRID_TRANSFORM_AFFINE)``. Row 0 = north (origin at ymax, y step -res).
+    GRID_TRANSFORM_AFFINE = (RESOLUTION, 0.0, XMIN, 0.0, -RESOLUTION, YMAX)
 else:
     XMIN = YMIN = XMAX = YMAX = None
     BBOX = None
+    GRID_TRANSFORM_AFFINE = None
 
 
 def require_center() -> tuple[float, float]:
