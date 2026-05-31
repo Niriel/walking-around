@@ -58,6 +58,7 @@ HEIGHTMAP_TIF = DATA_PROCESSED / "heightmap.tif"
 HEIGHTMAP_PREVIEW_PNG = DATA_PROCESSED / "heightmap_preview.png"  # Step 4 sanity preview (8-bit)
 SURFACE_TIF = DATA_PROCESSED / "surface.tif"
 HEIGHTMAP_PNG = DATA_PROCESSED / "heightmap.png"
+HEIGHTMAP_RAW_F32 = DATA_PROCESSED / "heightmap.f32"  # raw float32 meters, Godot reads losslessly
 SURFACE_PNG = DATA_PROCESSED / "surface.png"
 HEIGHTMAP_META_JSON = DATA_PROCESSED / "heightmap_meta.json"
 
