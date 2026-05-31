@@ -1,0 +1,19 @@
+[project]
+name = "walking-around"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "geopandas>=1.1.3",
+    "numpy>=2.4.6",
+    "pillow>=12.2.0",
+    "pyogrio>=0.12.1",
+    "pyproj>=3.7.2",
+    "rasterio>=1.5.0",
+    "requests>=2.34.2",
+    "shapely>=2.1.2",
+]
+
+[tool.uv]
+# This repo is a set of pipeline scripts, not a distributable library, so uv should
+# manage dependencies without trying to build the project itself into a wheel.
+package = false
