@@ -1,0 +1,114 @@
+{
+  // cSpell config for the walking-around project. Parsed as JSONC, so comments are allowed.
+  // The `words` list is grouped by category purely for human readability — cSpell itself
+  // treats it as one flat list and ignores the comments.
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    // --- Dutch BGT surface vocabulary -------------------------------------------------
+    // Feature-class names and `fysiek_voorkomen` (physical-appearance) values from the BGT
+    // (Basisregistratie Grootschalige Topografie), the Dutch large-scale topography registry.
+    "asfalt",                 // asphalt
+    "begroeidterreindeel",    // vegetated terrain part
+    "fysiek",                 // "physical" (from fysiek_voorkomen)
+    "fysiekVoorkomen",        // physical appearance — the attribute driving surface color
+    "gras",                   // grass
+    "groenvoorziening",       // green/planted area
+    "klinker",                // brick paving
+    "onbegroeidterreindeel",  // unvegetated terrain part
+    "ondersteunendwegdeel",   // supporting road part (sidewalks, verges)
+    "onverhard",              // unpaved
+    "struiken",               // shrubs
+    "transitie",              // transition (a placeholder fysiek_voorkomen value)
+    "verharding",             // paving/hardening (open/gesloten verharding)
+    "voorkomen",              // "appearance" (from fysiek_voorkomen)
+    "waterdeel",              // water part
+    "wegdeel",                // road part
+    "zand",                   // sand
+
+    // --- Dutch place names ------------------------------------------------------------
+    "Groningen",              // the city the mapped area sits in
+
+    // --- Organizations & national datasets --------------------------------------------
+    "AHN",                    // Actueel Hoogtebestand Nederland — national elevation dataset
+    "BGT",                    // Basisregistratie Grootschalige Topografie — topography registry
+    "DGM",                    // Digitaal Geologisch Model — Dutch layer-boundary geology model
+    "Digitaal",               // Dutch: "digital" (as in Digitaal Geologisch Model)
+    "Geologisch",             // Dutch: "geological" (as in Digitaal Geologisch Model)
+    "DICTU",                  // Dienst ICT Uitvoering — the Dutch govt IT org (interview target)
+    "DINOloket",              // TNO portal serving Dutch subsurface (geology) data
+    "GeoTOP",                 // TNO voxel model of the shallow Dutch subsurface
+    "PDOK",                   // Publieke Dienstverlening op de Kaart — the national geodata portal
+    "TNO",                    // Dutch research org; runs the Geological Survey of the Netherlands
+
+    // --- Python packages & CLI tools --------------------------------------------------
+    "gdalinfo",               // GDAL CLI tool: prints raster metadata
+    "geopandas",              // pandas + geometry; the in-memory vector table
+    "pyogrio",                // geopandas' vector I/O backend (OGR bindings)
+    "pyproj",                 // CRS / coordinate-transform library
+    "rasterio",               // raster I/O library (used for the .tif outputs)
+
+    // --- Software, engines & databases ------------------------------------------------
+    "GDScript",               // Godot's scripting language
+    "Godot",                  // the game engine rendering the walkable map
+    "PostGIS",                // spatial extension to PostgreSQL (the likely PDOK backend)
+    "PostgreSQL",             // the relational database PostGIS extends
+    "SFCGAL",                 // optional PostGIS extension adding true-3D ops (CGAL-backed)
+
+    // --- Subsurface / 3D geomodeling tools --------------------------------------------
+    // Specialized tools where heavy geological 3D modeling actually happens (vs. PostGIS storage).
+    "CGAL",                   // Computational Geometry Algorithms Library (backs SFCGAL)
+    "GemPy",                  // open-source Python implicit geological modeler
+    "geomodelers",            // dedicated geological modeling tools
+    "GOCAD",                  // subsurface modeling software (Paradigm/Emerson)
+    "Leapfrog",               // implicit 3D geological modeling software (Seequent)
+    "Petrel",                 // reservoir/subsurface modeling software (SLB)
+    "SKUA",                   // subsurface modeling suite (sibling of GOCAD)
+
+    // --- GIS file formats & extensions ------------------------------------------------
+    "Geobuf",                 // compact binary vector format (as in FlatGeobuf)
+    "GeoJSON",                // JSON vector format — what the OGC API returns
+    "GeoPackage",             // SQLite-based vector/raster container (.gpkg)
+    "GeoParquet",             // columnar (Parquet) vector format
+    "GeoTIFF",                // georeferenced TIFF raster
+    "gpkg",                   // GeoPackage file extension
+    "pgw",                    // PNG world file (sidecar georeferencing)
+    "tfw",                    // TIFF world file (sidecar georeferencing)
+
+    // --- GIS / geospatial jargon & acronyms -------------------------------------------
+    "EWKB",                   // Extended Well-Known Binary (WKB + embedded SRID)
+    "EWKT",                   // Extended Well-Known Text
+    "geodata",                // geospatial data (general)
+    "GeoKeys",                // GeoTIFF header tags encoding the CRS
+    "GiST",                   // Generalized Search Tree — PostGIS spatial index type
+    "heightmap",              // raster of elevation values
+    "lithology",              // rock/sediment type — a typical voxel attribute
+    "POINTZ",                 // PostGIS 3D point type (X, Y, Z)
+    "POINTZM",                // PostGIS 4D point type (X, Y, Z, M-measure)
+    "POLYGONZ",               // PostGIS 3D polygon type
+    "polyhedral",             // polyhedral surface — a true-3D vector geometry
+    "stratigraphy",           // the layering/ordering of geological strata
+    "TINs",                   // triangulated irregular networks (plural)
+    "voxel",                  // volumetric pixel — a 3D raster cell
+    "voxels",                 // plural of voxel
+    "ModelPixelScale",        // GeoTIFF tag: pixel size
+    "ModelTiepoint",          // GeoTIFF tag: ties a pixel to a world coordinate
+    "ModelTransformation",    // GeoTIFF tag: full affine pixel→world transform
+    "MULTIPOLYGON",           // OGC geometry type: several polygons as one feature
+    "rasterize",              // convert vector polygons → a raster grid
+    "rasterizer",             // the component performing rasterization
+    "reprojected",            // transformed to a different CRS
+    "reprojection",           // the act of changing CRS
+    "SRID",                   // Spatial Reference ID (e.g. 28992 = RD New)
+    "UTM",                    // Universal Transverse Mercator — a CRS family
+    "WGS"                     // World Geodetic System (as in WGS84, lat/lon degrees)
+  ],
+  "ignorePaths": [
+    ".git/**",
+    ".venv/**",
+    "cspell.json",
+    "data/**",
+    "godot/.godot/**",
+    "uv.lock"
+  ]
+}
